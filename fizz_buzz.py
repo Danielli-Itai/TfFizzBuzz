@@ -3,6 +3,7 @@
 
 import numpy as np
 import tensorflow as tf
+from sklearn.metrics import confusion_matrix
 
 NUM_DIGITS = 10
 
@@ -60,13 +61,21 @@ predict_op = tf.argmax(py_x, 1)
 def fizz_buzz(i, prediction):
     return [str(i), "fizz", "buzz", "fizzbuzz"][prediction]
 
+def fizz_buzz_calc(i):
+    if   i % 15 == 0: return fizz_buzz(i,3)
+    elif i % 5  == 0: return fizz_buzz(i,2)
+    elif i % 3  == 0: return fizz_buzz(i,1)
+    else:             return fizz_buzz(i,0)
+
+
+
 BATCH_SIZE = 128
 
 # Launch the graph in a session
 with tf.Session() as sess:
     tf.initialize_all_variables().run()
 
-    for epoch in range(10000):
+    for epoch in range(1000):
         # Shuffle the data before each training iteration.
         p = np.random.permutation(range(len(trX)))
         trX, trY = trX[p], trY[p]
@@ -85,4 +94,9 @@ with tf.Session() as sess:
     teY = sess.run(predict_op, feed_dict={X: teX})
     output = np.vectorize(fizz_buzz)(numbers, teY)
 
+    #Calculate the expected vector.
     print(output)
+
+    expected_vec = np.vectorize(fizz_buzz_calc)(numbers)
+    conf_matrix = confusion_matrix(expected_vec, output)
+    print(conf_matrix)
