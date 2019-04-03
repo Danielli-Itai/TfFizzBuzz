@@ -66,7 +66,8 @@ def plot_confusion_matrix(y_true, y_pred, classes,
     # Compute confusion matrix
     cm = confusion_matrix(y_true, y_pred)
     # Only use the labels that appear in the data
-    classes = classes[unique_labels(y_true, y_pred)]
+    print(unique_labels(y_true, y_pred))
+    #classes = classes[unique_labels(y_true, y_pred)]
     if normalize:
         cm = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
         print("Normalized confusion matrix")
@@ -100,17 +101,17 @@ def plot_confusion_matrix(y_true, y_pred, classes,
                     ha="center", va="center",
                     color="white" if cm[i, j] > thresh else "black")
     fig.tight_layout()
+    plt.show()
+    input("Press Enter to continue...")
     return ax
 
 
 np.set_printoptions(precision=2)
 
 # Plot non-normalized confusion matrix
-plot_confusion_matrix(y_test, y_pred, classes=class_names,
-                      title='Confusion matrix, without normalization')
+#plot_confusion_matrix(y_test, y_pred, classes=class_names, title='Confusion matrix, without normalization')
 
 # Plot normalized confusion matrix
-plot_confusion_matrix(y_test, y_pred, classes=class_names, normalize=True,
-                      title='Normalized confusion matrix')
+#plot_confusion_matrix(y_test, y_pred, classes=class_names, normalize=True, title='Normalized confusion matrix')
 
 plt.show()
