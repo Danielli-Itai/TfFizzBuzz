@@ -102,7 +102,6 @@ def plot_confusion_matrix(y_true, y_pred, classes,
                     color="white" if cm[i, j] > thresh else "black")
     fig.tight_layout()
     plt.show()
-    input("Press Enter to continue...")
     return ax
 
 
