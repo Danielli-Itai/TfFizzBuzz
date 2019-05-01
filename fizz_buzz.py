@@ -138,6 +138,7 @@ def fizz_buzz_cls(num):
     elif num % 3  == 0: return 1
     else: return 0
 
+fizz_buzz_names=["num", "fizz", "buzz", "fizzbuzz"];
 def fizz_buzz_name(i, prediction):
     return [str(i), "fizz", "buzz", "fizzbuzz"][prediction]
 
@@ -162,6 +163,7 @@ def mish_buzz_cls(num):
     elif num % 2  == 0: return 1
     else: return 0
 
+mish_buzz_names:list=["num", "mish", "fizz", "buzz", "mishfizz", "mishbuzz", "fizzbuzz"];
 def mish_buzz_name(i, prediction):
     return [str(i), "mish", "fizz", "buzz", "mishfizz", "mishbuzz", "fizzbuzz"][prediction]
 
@@ -205,7 +207,7 @@ def TensorTest(sess:tf.Session, input_encoder, test_last:int, in_digits:int, X, 
 #*************************************************************
 #   Performance report.
 #Report the network performance.
-def Report(numbers:list, predicted_vec:list, fizz_buzz_name, fizz_buzz_cls, debug:bool):
+def Report(numbers:list, predicted_vec:list, fizz_buzz_name, fizz_buzz_cls, class_names:list, debug:bool):
     # Calculate the expected vector.
     expected_vec = numpy.vectorize(fizz_buzz_cls)(numbers)
 
@@ -222,7 +224,8 @@ def Report(numbers:list, predicted_vec:list, fizz_buzz_name, fizz_buzz_cls, debu
     if(debug):
         conf_matrix = metrics.confusion_matrix(expected_vec, predicted_vec)
         print('Confusion matrix : ' + str(conf_matrix))
-        plot(y_true=expected_vec, y_pred=predicted_vec, classes=["num", "fizz", "buzz", "fizzbuzz"])
+        plot(y_true=expected_vec, y_pred=predicted_vec, classes=class_names)
+        #plot(y_true=expected_vec, y_pred=predicted_vec, classes=["num", "fizz", "buzz", "fizzbuzz"])
     return;
 
 
@@ -230,11 +233,12 @@ def Report(numbers:list, predicted_vec:list, fizz_buzz_name, fizz_buzz_cls, debu
 
 #*************************************************************
 #   Run the network learning algorithm.
-def TensorFlowRun(num_hidden:int, input_encoder, exp_output, exp_class, class_name, max_in:int, in_digits:int, out_digits:int, debug:bool):
+def TensorFlowRun(num_hidden:int, train_size:int, input_encoder, exp_output, exp_class, class_name, max_in:int, in_digits:int, class_names, debug:bool):
     TEST_LAST = 100
     BATCH_SIZE = 128  # Number of samples to test.
-    TRAIN_SIZE = BATCH_SIZE * 1
+    TRAIN_SIZE = BATCH_SIZE * train_size
 
+    out_digits: int = len(class_names);
     with tf.Session() as sess:
         w_h, w_o = WeightsInit(in_digits, num_hidden, out_digits);
         X, Y = PlaceHolders(in_digits, out_digits);
@@ -246,7 +250,7 @@ def TensorFlowRun(num_hidden:int, input_encoder, exp_output, exp_class, class_na
 
         numbers, test_output = TensorTest(sess, input_encoder, TEST_LAST + 1, in_digits, X, predict_op)
 
-        Report(numbers, test_output, class_name, exp_class, debug)
+        Report(numbers, test_output, class_name, exp_class, class_names, debug)
     return;
 
 
@@ -259,33 +263,33 @@ def TensorFlowRun(num_hidden:int, input_encoder, exp_output, exp_class, class_na
 #*************************************************************
 #   Running experiments
 NUM_HIDDEN = 100  # How many units in the hidden layer.
-NUM_OUT_DIGITS = 4;
+NUM_IN_DIGITS = binary_digits(MAX_NUM)  # Number of binary digits (Maximum number)
+#NUM_OUT_DIGITS = 4;
+TRAIN_SIZE = 1
 for i in range (1):
-    NUM_IN_DIGITS = binary_digits(MAX_NUM)  # Number of binary digits (Maximum number)
-    TensorFlowRun(NUM_HIDDEN, binary_encode, fizz_buzz_encode, fizz_buzz_cls, fizz_buzz_name, MAX_NUM, NUM_IN_DIGITS, NUM_OUT_DIGITS, True);
-
-
-for i in range (1):
-    NUM_IN_DIGITS = primes_digits(MAX_NUM)  # Number of binary digits (Maximum number)
-    TensorFlowRun(NUM_HIDDEN, primes_encode, fizz_buzz_encode, fizz_buzz_cls, fizz_buzz_name, MAX_NUM, NUM_IN_DIGITS, NUM_OUT_DIGITS, True);
-    input("Press Enter to continue...")
+    TensorFlowRun(NUM_HIDDEN, TRAIN_SIZE, binary_encode, fizz_buzz_encode, fizz_buzz_cls, fizz_buzz_name, MAX_NUM, NUM_IN_DIGITS, fizz_buzz_names, True);
 
 NUM_HIDDEN = 100  # How many units in the hidden layer.
-NUM_IN_DIGITS = binary_digits(MAX_NUM)   # Number of binary digits (Maximum number)
-NUM_OUT_DIGITS = 7;
-TRAIN_LOOPS = 1
-for i in range (0):
-    TensorFlowRun(NUM_HIDDEN, binary_encode, mish_buzz_encode, mish_buzz_cls, mish_buzz_name, MAX_NUM, NUM_IN_DIGITS, NUM_OUT_DIGITS, True);
-    input("Press Enter to continue...")
-
-
+NUM_IN_DIGITS = primes_digits(MAX_NUM)  # Number of binary digits (Maximum number)
+#NUM_OUT_DIGITS = 4;
+TRAIN_SIZE = 1
+for i in range (1):
+    TensorFlowRun(NUM_HIDDEN, TRAIN_SIZE, primes_encode, fizz_buzz_encode, fizz_buzz_cls, fizz_buzz_name, MAX_NUM, NUM_IN_DIGITS, fizz_buzz_names, True);
 
 
 NUM_HIDDEN = 5000  # How many units in the hidden layer.
 NUM_IN_DIGITS = binary_digits(MAX_NUM)   # Number of binary digits (Maximum number)
-NUM_OUT_DIGITS = 7;
-TRAIN_LOOPS = 3
-for i in range (0):
-    TensorFlowRun(NUM_HIDDEN, binary_encode, mish_buzz_encode, mish_buzz_cls, mish_buzz_name, MAX_NUM, NUM_IN_DIGITS, NUM_OUT_DIGITS, True);
+#NUM_OUT_DIGITS = 7;
+TRAIN_SIZE = 1
+for i in range (1):
+    TensorFlowRun(NUM_HIDDEN, TRAIN_SIZE, binary_encode, mish_buzz_encode, mish_buzz_cls, mish_buzz_name, MAX_NUM, NUM_IN_DIGITS, mish_buzz_names, True);
+
+
+NUM_HIDDEN = 5000  # How many units in the hidden layer.
+NUM_IN_DIGITS = primes_digits(MAX_NUM)   # Number of binary digits (Maximum number)
+#NUM_OUT_DIGITS = 7;
+TRAIN_SIZE = 1
+for i in range (1):
+    TensorFlowRun(NUM_HIDDEN, TRAIN_SIZE, primes_encode, mish_buzz_encode, mish_buzz_cls, mish_buzz_name, MAX_NUM, NUM_IN_DIGITS, mish_buzz_names, True);
 
 input("Press Enter to continue...")
