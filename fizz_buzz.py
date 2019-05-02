@@ -225,7 +225,6 @@ def Report(numbers:list, predicted_vec:list, fizz_buzz_name, fizz_buzz_cls, clas
         conf_matrix = metrics.confusion_matrix(expected_vec, predicted_vec)
         print('Confusion matrix : ' + str(conf_matrix))
         plot(y_true=expected_vec, y_pred=predicted_vec, classes=class_names)
-        #plot(y_true=expected_vec, y_pred=predicted_vec, classes=["num", "fizz", "buzz", "fizzbuzz"])
     return;
 
 
@@ -262,34 +261,65 @@ def TensorFlowRun(num_hidden:int, train_size:int, input_encoder, exp_output, exp
 
 #*************************************************************
 #   Running experiments
+
+#  questions 1-4
+#1. Take the FizzBuzz example and make it work: It works.
+#2. Add to the code a function that analyzes the results.
+#	a. Print the accuracy of the classifier: See the report function and the batch accuracy reort.
+#	b. Generate a confusion matrix:          See the report function.
+#3. Run it once and put the results in a word file: the loop can be set to once or 10 times.
 NUM_HIDDEN = 100  # How many units in the hidden layer.
 NUM_IN_DIGITS = binary_digits(MAX_NUM)  # Number of binary digits (Maximum number)
-#NUM_OUT_DIGITS = 4;
-TRAIN_SIZE = 1
+TRAIN_SIZE = 8
+print("Run bizz buzz 1 time with progress combinations of 2,3,6,10")
 for i in range (1):
-    TensorFlowRun(NUM_HIDDEN, TRAIN_SIZE, binary_encode, fizz_buzz_encode, fizz_buzz_cls, fizz_buzz_name, MAX_NUM, NUM_IN_DIGITS, fizz_buzz_names, True);
+	TensorFlowRun(NUM_HIDDEN, TRAIN_SIZE, binary_encode, fizz_buzz_encode, fizz_buzz_cls, fizz_buzz_name, MAX_NUM, NUM_IN_DIGITS, fizz_buzz_names, True);
+
+#4. Rerun the algorithm 10 times and see if there are differences in the accuracy:  The alogrithem is executed 10 times.
+NUM_HIDDEN = 100  # How many units in the hidden layer.
+NUM_IN_DIGITS = binary_digits(MAX_NUM)  # Number of binary digits (Maximum number)
+TRAIN_SIZE = 8
+print("Run 8 times without progress report to compare results")
+for i in range (10):
+	TensorFlowRun(NUM_HIDDEN, TRAIN_SIZE, binary_encode, fizz_buzz_encode, fizz_buzz_cls, fizz_buzz_name, MAX_NUM, NUM_IN_DIGITS, fizz_buzz_names, False);
+
+
+# questions 5-6
+#5. Change the algorithm to also deal with the number 2 besides the numbers 3
+#	and 5 with all the relevant combinations (more classes2,3,5): we added the mish_buzz ancoding and class functions and class names.
+#6. Run it once and put the results in a word file.
+NUM_HIDDEN = 100  # How many units in the hidden layer.
+print("Add mish buzz combinations of 2,3,5,6,10,15")
+NUM_IN_DIGITS = binary_digits(MAX_NUM)   # Number of binary digits (Maximum number)
+TRAIN_SIZE = 8
+for i in range (1):
+	TensorFlowRun(NUM_HIDDEN, TRAIN_SIZE, binary_encode, mish_buzz_encode, mish_buzz_cls, mish_buzz_name, MAX_NUM, NUM_IN_DIGITS, mish_buzz_names, True);
+
+
+# a question 7
+#7. Try to improve the results by more training, change the network etc.
+NUM_HIDDEN = 5000  # How many units in the hidden layer. we increase from 100 to 5000
+NUM_IN_DIGITS = primes_digits(MAX_NUM)   # Number of binary digits (Maximum number)
+TRAIN_SIZE = 1
+print("improve binary encode training and hidden layer")
+for i in range (1):
+    TensorFlowRun(NUM_HIDDEN, TRAIN_SIZE, primes_encode, mish_buzz_encode, mish_buzz_cls, mish_buzz_name, MAX_NUM, NUM_IN_DIGITS, mish_buzz_names, True);
+
+#  a question 8 for fizzbuzz
+#8. Change the representation from binary to prime based(encode the numbers as
+#	prime number multiplayer). That means each number is coded by how many
+#	time each prime appears in the product. For large primes you can put them all
+#	in one bucket.
+#	Example: 24 is coded as 2^3* 3^1 -? [3,1,0,0,0,0…]
+#	Do you think the algorithms (first and second) will work better? Run them
+#	and write the results and compare them.
 
 NUM_HIDDEN = 100  # How many units in the hidden layer.
 NUM_IN_DIGITS = primes_digits(MAX_NUM)  # Number of binary digits (Maximum number)
-#NUM_OUT_DIGITS = 4;
-TRAIN_SIZE = 1
-for i in range (1):
-    TensorFlowRun(NUM_HIDDEN, TRAIN_SIZE, primes_encode, fizz_buzz_encode, fizz_buzz_cls, fizz_buzz_name, MAX_NUM, NUM_IN_DIGITS, fizz_buzz_names, True);
-
-
-NUM_HIDDEN = 5000  # How many units in the hidden layer.
-NUM_IN_DIGITS = binary_digits(MAX_NUM)   # Number of binary digits (Maximum number)
-#NUM_OUT_DIGITS = 7;
-TRAIN_SIZE = 1
-for i in range (1):
-    TensorFlowRun(NUM_HIDDEN, TRAIN_SIZE, binary_encode, mish_buzz_encode, mish_buzz_cls, mish_buzz_name, MAX_NUM, NUM_IN_DIGITS, mish_buzz_names, True);
-
-
-NUM_HIDDEN = 5000  # How many units in the hidden layer.
-NUM_IN_DIGITS = primes_digits(MAX_NUM)   # Number of binary digits (Maximum number)
-#NUM_OUT_DIGITS = 7;
-TRAIN_SIZE = 1
-for i in range (1):
+TRAIN_SIZE = 2
+print("perform prim encoding with small hidden layer and small number of train")
+for i in range(0):
     TensorFlowRun(NUM_HIDDEN, TRAIN_SIZE, primes_encode, mish_buzz_encode, mish_buzz_cls, mish_buzz_name, MAX_NUM, NUM_IN_DIGITS, mish_buzz_names, True);
+
 
 input("Press Enter to continue...")
