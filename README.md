@@ -1,3 +1,9 @@
+Required packages:
+    numpy
+    matplotlib
+    sklearn
+    sympy
+    
 # fizz-buzz-tensorflow
 
 fizz buzz in tensorflow

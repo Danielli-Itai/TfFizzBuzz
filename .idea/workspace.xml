@@ -2,10 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c406dc29-13b1-4fca-a328-3f53553b6b58" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../github-process-research/code/get_summary_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/../github-process-research/code/get_summary_data.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../github-process-research/code/plots.py" beforeDir="false" afterPath="$PROJECT_DIR$/../github-process-research/code/plots.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../GitAppPy/Settings/TopicsQueries.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GitAppPy/Base/Curl.py" beforeDir="false" afterPath="$PROJECT_DIR$/../GitAppPy/Base/Curl.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GitAppPy/Base/GitRepo.py" beforeDir="false" afterPath="$PROJECT_DIR$/../GitAppPy/Base/GitRepo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GitAppPy/Base/SqlDb.py" beforeDir="false" afterPath="$PROJECT_DIR$/../GitAppPy/Base/SqlDb.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GitAppPy/Base/SqlDb_BACKUP_7920.py" beforeDir="false" afterPath="$PROJECT_DIR$/../GitAppPy/Base/SqlDb_BACKUP_7920.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GitAppPy/Base/SqlDb_BASE_7920.py" beforeDir="false" afterPath="$PROJECT_DIR$/../GitAppPy/Base/SqlDb_BASE_7920.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GitAppPy/Base/SqlDb_LOCAL_7920.py" beforeDir="false" afterPath="$PROJECT_DIR$/../GitAppPy/Base/SqlDb_LOCAL_7920.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GitAppPy/Base/SqlDb_REMOTE_7920.py" beforeDir="false" afterPath="$PROJECT_DIR$/../GitAppPy/Base/SqlDb_REMOTE_7920.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GitAppPy/Code/research.py" beforeDir="false" afterPath="$PROJECT_DIR$/../GitAppPy/Code/research.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GitAppPy/Settings/ReposQueries.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../GitAppPy/Settings/ReposQueries.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/fizz-buzz.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/fizz-buzz.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../github-process-research/.idea/github-process-research.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../github-process-research/.idea/github-process-research.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../github-process-research/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../github-process-research/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../github-process-research/code/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../github-process-research/code/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../github-process-research/code/plotter.py" beforeDir="false" afterPath="$PROJECT_DIR$/../github-process-research/code/plotter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../github-process-research/code/research.py" beforeDir="false" afterPath="$PROJECT_DIR$/../github-process-research/code/research.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../github-process-research/paper/bibliography.bib" beforeDir="false" afterPath="$PROJECT_DIR$/../github-process-research/paper/bibliography.bib" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../github-process-research/paper/main.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../github-process-research/paper/main.tex" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -14,32 +31,10 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/fizz_buzz.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="583">
-              <caret line="77" lean-forward="true" selection-start-line="77" selection-end-line="77" />
-              <folding>
-                <element signature="e#90#108#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_execfile.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="274">
-              <caret line="17" selection-start-line="17" selection-end-line="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../github-process-research" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -49,10 +44,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-1769" />
-    <option name="y" value="95" />
-    <option name="width" value="1552" />
-    <option name="height" value="880" />
+    <option name="x" value="-9" />
+    <option name="y" value="-9" />
+    <option name="width" value="1938" />
+    <option name="height" value="1048" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -65,7 +60,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../github-process-research" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../WsPycharm" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunDashboard">
@@ -122,15 +117,11 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1928" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <layout>
-      <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2536913" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Python Console" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
@@ -138,11 +129,15 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="R Packages" />
-      <window_info anchor="right" id="R Graphics" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Python Console" order="10" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="R Graphics" order="3" />
+      <window_info anchor="right" id="R Packages" order="4" />
     </layout>
   </component>
   <component name="XDebuggerManager">
@@ -157,13 +152,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_execfile.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="274">
-          <caret line="17" selection-start-line="17" selection-end-line="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="450">
@@ -171,30 +159,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/Python/Python37/Lib/codecs.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="309" selection-start-line="309" selection-end-line="309" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Python/Python37/Lib/site-packages/numpy/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://C:/Python/Python37/Lib/site-packages/tensorflow/python/ops/nn_ops.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="2314" selection-start-line="2314" selection-end-line="2314" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Python/Python37/Lib/site-packages/tensorflow/python/ops/array_ops.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="61">
-          <caret line="2035" column="4" selection-start-line="2035" selection-start-column="4" selection-end-line="2035" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://C:/Python/Python37/Lib/codecs.py" />
+    <entry file="file://C:/Python/Python37/Lib/site-packages/numpy/__init__.py" />
+    <entry file="file://C:/Python/Python37/Lib/site-packages/tensorflow/python/ops/nn_ops.py" />
+    <entry file="file://C:/Python/Python37/Lib/site-packages/tensorflow/python/ops/array_ops.py" />
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
@@ -212,20 +180,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/Python/Python37/Lib/site-packages/tensorflow/python/util/deprecation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="323" selection-start-line="323" selection-end-line="323" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://C:/Python/Python37/Lib/site-packages/tensorflow/python/util/deprecation.py" />
     <entry file="file://$PROJECT_DIR$/fizz_buzz.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="583">
-          <caret line="77" lean-forward="true" selection-start-line="77" selection-end-line="77" />
-          <folding>
-            <element signature="e#90#108#0" expanded="true" />
-          </folding>
+          <caret line="77" selection-start-line="77" selection-end-line="77" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_execfile.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
         </state>
       </provider>
     </entry>

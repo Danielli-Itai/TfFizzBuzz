@@ -26,10 +26,10 @@ using :ref:`grid_search`.
 
 print(__doc__)
 
-import numpy as np
-import matplotlib.pyplot as plt
+import numpy as np                  #numpy
+import matplotlib.pyplot as plt     #matplotlib
 
-from sklearn import svm, datasets
+from sklearn import svm, datasets   #sklearn
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import confusion_matrix
 from sklearn.utils.multiclass import unique_labels
