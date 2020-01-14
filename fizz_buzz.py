@@ -3,7 +3,7 @@
 # So it would be unfair to include these in our training data.
 # Accordingly, the training data corresponds to the numbers 101 to (2 ** NUM_DIGITS - 1).
 # see http://joelgrus.com/2016/05/23/fizz-buzz-in-tensorflow/
-from Base.plot_confusion_matrix import plot_confusion_matrix as plot
+from PyBaseGUI.Mplot import  plot_confusion_matrix as plot
 import numpy #as np
 import tensorflow as tf
 from sklearn import metrics
@@ -17,6 +17,7 @@ from sympy.ntheory import factorint
 
 #*************************************************************
 #   Maximum number to clasify
+PROGRESS_SHOW = False
 MAX_NUM = 2**10
 
 
@@ -174,7 +175,7 @@ def TrainData(test_start:int, max_in, in_digits, input_encoder, fizz_buzz_encode
     return(trainX, trainY)
 
 # Train the network using the labled data.
-def TensorTrain(X, Y, test_size:int, batch_size:int, trainX:list, trainY:list, train_op, predict_op, sess:tf.Session, debug:bool):
+def TensorTrain(X, Y, test_size:int, batch_size:int, trainX:list, trainY:list, train_op, predict_op, sess:tf.Session):
     for epoch in range(test_size):
         # Shuffle the data before each training iteration.
         p = numpy.random.permutation(range(len(trainX)))
@@ -186,7 +187,8 @@ def TensorTrain(X, Y, test_size:int, batch_size:int, trainX:list, trainY:list, t
             sess.run(train_op, feed_dict={X: trainX[start:end], Y: trainY[start:end]})
 
             # And print the current accuracy on the training data.
-            if(debug): print(epoch, numpy.mean(numpy.argmax(trainY, axis=1) == sess.run(predict_op, feed_dict={X: trainX, Y: trainY})))
+            if(PROGRESS_SHOW):
+                print(epoch, numpy.mean(numpy.argmax(trainY, axis=1) == sess.run(predict_op, feed_dict={X: trainX, Y: trainY})))
     return;
 
 
@@ -207,24 +209,23 @@ def TensorTest(sess:tf.Session, input_encoder, test_last:int, in_digits:int, X, 
 #*************************************************************
 #   Performance report.
 #Report the network performance.
-def Report(numbers:list, predicted_vec:list, fizz_buzz_name, fizz_buzz_cls, class_names:list, debug:bool):
+def Report(numbers:list, predicted_vec:list, fizz_buzz_name, fizz_buzz_cls, class_names:list):
     # Calculate the expected vector.
     expected_vec = numpy.vectorize(fizz_buzz_cls)(numbers)
 
     #Print the output vector.
-    if(debug):
-        output_vec = numpy.vectorize(fizz_buzz_name)(numbers, predicted_vec)
-        print(output_vec)
+    output_vec = numpy.vectorize(fizz_buzz_name)(numbers, predicted_vec)
+    print(output_vec)
 
     #Print accuracy mesure.
     accuracy = metrics.accuracy_score(expected_vec, predicted_vec)
     print('Accuracy : ' + str(accuracy));
 
     #Print confusion matrix.
-    if(debug):
-        conf_matrix = metrics.confusion_matrix(expected_vec, predicted_vec)
-        print('Confusion matrix : ' + str(conf_matrix))
-        plot(y_true=expected_vec, y_pred=predicted_vec, classes=class_names)
+    conf_matrix = metrics.confusion_matrix(expected_vec, predicted_vec)
+    print('Confusion matrix : ' + str(conf_matrix))
+    plot(actual_cls=expected_vec, predict_cls=predicted_vec, classes=class_names)
+
     return;
 
 
@@ -232,7 +233,7 @@ def Report(numbers:list, predicted_vec:list, fizz_buzz_name, fizz_buzz_cls, clas
 
 #*************************************************************
 #   Run the network learning algorithm.
-def TensorFlowRun(num_hidden:int, train_size:int, input_encoder, exp_output, exp_class, class_name, max_in:int, in_digits:int, class_names, debug:bool):
+def TensorFlowRun(num_hidden:int, train_size:int, input_encoder, exp_output, exp_class, class_name, max_in:int, in_digits:int, class_names, report:bool):
     TEST_LAST = 100
     BATCH_SIZE = 128  # Number of samples to test.
     TRAIN_SIZE = BATCH_SIZE * train_size
@@ -245,11 +246,10 @@ def TensorFlowRun(num_hidden:int, train_size:int, input_encoder, exp_output, exp
         tf.initialize_all_variables().run()
 
         trainX, trainY = TrainData(TEST_LAST + 1, max_in, in_digits, input_encoder, exp_output)
-        TensorTrain(X, Y, TRAIN_SIZE, BATCH_SIZE, trainX, trainY, train_op, predict_op, sess, debug)
+        TensorTrain(X, Y, TRAIN_SIZE, BATCH_SIZE, trainX, trainY, train_op, predict_op, sess)
 
         numbers, test_output = TensorTest(sess, input_encoder, TEST_LAST + 1, in_digits, X, predict_op)
-
-        Report(numbers, test_output, class_name, exp_class, class_names, debug)
+        if(report): Report(numbers, test_output, class_name, exp_class, class_names)
     return;
 
 
@@ -280,8 +280,9 @@ NUM_HIDDEN = 100  # How many units in the hidden layer.
 NUM_IN_DIGITS = binary_digits(MAX_NUM)  # Number of binary digits (Maximum number)
 TRAIN_SIZE = 8
 print("Run 8 times without progress report to compare results")
-for i in range (10):
+for i in range (9):
 	TensorFlowRun(NUM_HIDDEN, TRAIN_SIZE, binary_encode, fizz_buzz_encode, fizz_buzz_cls, fizz_buzz_name, MAX_NUM, NUM_IN_DIGITS, fizz_buzz_names, False);
+TensorFlowRun(NUM_HIDDEN, TRAIN_SIZE, binary_encode, fizz_buzz_encode, fizz_buzz_cls, fizz_buzz_name, MAX_NUM, NUM_IN_DIGITS, fizz_buzz_names, True);
 
 
 # questions 5-6
