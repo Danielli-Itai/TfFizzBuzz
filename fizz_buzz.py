@@ -5,7 +5,7 @@
 # see http://joelgrus.com/2016/05/23/fizz-buzz-in-tensorflow/
 from PyBaseGUI.Mplot import  plot_confusion_matrix as plot
 import numpy #as np
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 from sklearn import metrics
 from sympy import sieve
 from sympy.ntheory import factorint
